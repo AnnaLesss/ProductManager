@@ -17,7 +17,7 @@ public class ProductRepository {
         return prod;
     }
 
-    public void removeById (int id) {
+    public void removeById(int id) {
         Product[] tmp = new Product[prod.length - 1];
         int copyToIndex = 0;
         for (Product prod : prod) {

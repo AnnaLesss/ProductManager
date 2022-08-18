@@ -17,8 +17,8 @@ public class Product {
         return id;
     }
 
-    public void setId (int Id) {
-        this.id= id;
+    public void setId(int Id) {
+        this.id = id;
     }
 
     public String getName() {

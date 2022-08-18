@@ -10,8 +10,8 @@ public class ProductRepositoryTest {
 
     Product Smartphone = new Smartphone(22222, "Apple", 100_000, "США");
     Product Book = new Book(12345, "Мастер и Маргарита", 600, "Булгаков");
-    Product Book2 = new Book (555, "Война и мир", 500, "Толстой");
-    Product Smartphone2 = new Smartphone (1023, "Samsung", 97_000, "Южная Корея");
+    Product Book2 = new Book(555, "Война и мир", 500, "Толстой");
+    Product Smartphone2 = new Smartphone(1023, "Samsung", 97_000, "Южная Корея");
 
     @BeforeEach
     public void Product() {
@@ -25,9 +25,7 @@ public class ProductRepositoryTest {
 
     @Test
 
-    public void shouldSaveProduct () {
-
-
+    public void shouldSaveProduct() {
 
         Product[] expected = {
                 Smartphone,
@@ -42,9 +40,10 @@ public class ProductRepositoryTest {
 
 
     }
+
     @Test
 
-    public void shouldRemoveById () {
+    public void shouldRemoveById() {
 
         Repository.removeById(22222);
 
@@ -59,6 +58,36 @@ public class ProductRepositoryTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldRemoveByTwoId() {
+
+        Repository.removeById(22222);
+        Repository.removeById(1023);
+
+        Product[] expected = {
+                Book,
+                Book2,
+        };
+
+        Product[] actual = Repository.getAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldRemoveAllId() {
+
+        Repository.removeById(22222);
+        Repository.removeById(1023);
+        Repository.removeById(12345);
+        Repository.removeById(555);
+
+        Product[] expected = {};
+
+        Product[] actual = Repository.getAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
 
 }

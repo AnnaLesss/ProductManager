@@ -28,7 +28,6 @@ public class ProductManagerTest {
 
     public void shouldFindAuthor () {
 
-        Manager.matches(Book,"Булгаков");
 
             Product[] expected = {Book};
             Product[] actual = Manager.searchBy("Булгаков");
