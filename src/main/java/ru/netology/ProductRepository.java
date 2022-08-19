@@ -2,21 +2,33 @@ package ru.netology;
 
 public class ProductRepository {
 
-    private static Product[] prod = new Product[0];
+    private Product[] prod = new Product[0];
 
-    public static void save(Product product) {
+    public void save(Product product) {
         Product[] tmp = new Product[prod.length + 1];
-        for (int i = 0; i < prod.length; i++) {
-            tmp[i] = prod[i];
-        }
+        System.arraycopy (prod, 0, tmp, 0, prod.length);
+//        for (int i = 0; i < prod.length; i++) {
+//            tmp[i] = prod[i];
+//        }
         tmp[tmp.length - 1] = product;
         prod = tmp;
     }
 
-    public static Product[] getAll() {
+    public Product[] getAll() {
         return prod;
     }
 
+<<<<<<< HEAD
+=======
+    public Product findById(int id) {
+        for (Product prod : prod) {
+            if (prod.getId() == id) {
+                return prod;
+            }
+        }
+        return null;
+    }
+>>>>>>> 2807372dfb5f258364cf5b807332bf2a47e3b18b
 
     public void removeById(int id) {
         Product[] tmp = new Product[prod.length - 1];

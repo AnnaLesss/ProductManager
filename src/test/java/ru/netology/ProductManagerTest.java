@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class ProductManagerTest {
-    ProductManager Manager = new ProductManager();
+    ProductRepository Repository = new ProductRepository();
+    ProductManager Manager = new ProductManager(Repository);
 
     Product Smartphone = new Smartphone(22222, "Apple", 100_000, "США");
     Product Book = new Book(12345, "Мастер и Маргарита", 600, "Булгаков");
@@ -43,7 +44,7 @@ public class ProductManagerTest {
 
     @Test
     public void shouldNotFindAuthor() {
-        Product[] expected = {};
+        Product[] expected = {Book2};
         Product[] actual = Manager.searchBy("Толстой");
         assertArrayEquals(expected, actual);
     }

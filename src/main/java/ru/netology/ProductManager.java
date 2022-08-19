@@ -6,6 +6,10 @@ public class ProductManager {
     public ProductRepository getRepo() {
         return repo;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2807372dfb5f258364cf5b807332bf2a47e3b18b
     public void setRepo(ProductRepository repo) {
         this.repo = repo;
     }
@@ -14,19 +18,32 @@ public class ProductManager {
         this.repo = repo;
     }
 
-    public ProductManager() {
-    }
 
     public void add(Product prod) {
         repo.save(prod);
     }
 
     public boolean matches(Product product, String search) {
-        if (product.getName().contains(search)) {
-            return true;
-        } else {
+        if (product instanceof Book) { // если в параметре product лежит объект класса Book
+            Book book = (Book) product; // положем его в переменную типа Book чтобы пользоваться методами класса Book
+            if (book.getAuthor().contains(search)) { // проверим есть ли поисковое слово в данных об авторе
+                return true;
+            }
+            if (book.getName().contains(search)) {
+                return true;
+            }
             return false;
         }
+        if (product instanceof Smartphone) { // если в параметре product лежит объект класса Smartphone
+            Smartphone smartphone = (Smartphone) product; // положем его в переменную типа Smartphone чтобы пользоваться методами класса Smartphone
+            if (smartphone.getManufacturer().contains(search)) { // проверим есть ли поисковое слово в данных о производителе
+                return true;
+            }
+            if (smartphone.getName().contains(search)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -35,10 +52,13 @@ public class ProductManager {
         for (Product product : repo.getAll()) {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];
-                for (int i = 0; i < result.length; i++) {
-                    tmp[tmp.length - 1] = product;
-                    result = tmp;
-                }
+                System.arraycopy(result, 0, tmp, 0, result.length);   // можно так вместо for
+//                for (int i = 0; i < result.length; i++) {
+//                    tmp[tmp.length - 1] = product;
+//                    result = tmp;
+//                }
+                tmp[tmp.length - 1] = product;
+                result = tmp;
             }
         }
         return result;
