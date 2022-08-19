@@ -8,6 +8,7 @@ public class ProductRepositoryTest {
 
     ProductRepository Repository = new ProductRepository();
 
+
     Product Smartphone = new Smartphone(22222, "Apple", 100_000, "США");
     Product Book = new Book(12345, "Мастер и Маргарита", 600, "Булгаков");
     Product Book2 = new Book(555, "Война и мир", 500, "Толстой");
@@ -27,6 +28,8 @@ public class ProductRepositoryTest {
 
     public void shouldSaveProduct() {
 
+
+
         Product[] expected = {
                 Smartphone,
                 Book,
@@ -45,6 +48,7 @@ public class ProductRepositoryTest {
 
     public void shouldRemoveById() {
 
+
         Repository.removeById(22222);
 
         Product[] expected = {
@@ -61,6 +65,7 @@ public class ProductRepositoryTest {
     @Test
     public void shouldRemoveByTwoId() {
 
+
         Repository.removeById(22222);
         Repository.removeById(1023);
 
@@ -76,6 +81,7 @@ public class ProductRepositoryTest {
 
     @Test
     public void shouldRemoveAllId() {
+
 
         Repository.removeById(22222);
         Repository.removeById(1023);
