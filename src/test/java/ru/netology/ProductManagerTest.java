@@ -29,22 +29,29 @@ public class ProductManagerTest {
 
     public void shouldFindAuthor () {
 
+        Manager.matches(Book,"Булгаков" );
 
-            Product[] expected = {Book};
+
+            Product[] expected = {};
             Product[] actual = Manager.searchBy("Булгаков");
             assertArrayEquals(expected, actual);
         }
 
     @Test
     public void shouldFindNameBook() {
-        Product[] expected = {Book2};
+        Manager.matches(Book2,"Война и мир" );
+
+        Product[] expected = {};
         Product[] actual = Manager.searchBy("Война и мир");
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldNotFindAuthor() {
-        Product[] expected = {Book2};
+
+        Manager.matches(Book2,"Некрасов" );
+
+        Product[] expected = {};
         Product[] actual = Manager.searchBy("Толстой");
         assertArrayEquals(expected, actual);
     }
