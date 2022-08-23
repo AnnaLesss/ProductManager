@@ -29,7 +29,6 @@ public class ProductRepositoryTest {
     public void shouldSaveProduct() {
 
 
-
         Product[] expected = {
                 Smartphone,
                 Book,
