@@ -3,7 +3,7 @@ package ru.netology;
 
 public class Smartphone extends Product {
 
-    private String manufacturer;
+    protected String manufacturer;
 
     public String getManufacturer() {
         return manufacturer;

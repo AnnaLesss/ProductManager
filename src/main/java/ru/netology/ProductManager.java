@@ -1,7 +1,7 @@
 package ru.netology;
 
 public class ProductManager {
-    private ProductRepository repo;
+    protected ProductRepository repo;
 
     public ProductRepository getRepo() {
         return repo;
@@ -20,6 +20,10 @@ public class ProductManager {
         repo.save(prod);
     }
 
+    public Product[] getAll() {
+        return repo.getAll();
+    }
+
     public boolean matches(Product product, String search) {
         if (product.getName().contains(search)) {
             return true;
@@ -34,9 +38,10 @@ public class ProductManager {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];
                 for (int i = 0; i < result.length; i++) {
-                    tmp[tmp.length - 1] = product;
-                    result = tmp;
+                    tmp[i] = result[i];
                 }
+                tmp[tmp.length - 1] = product;
+                result = tmp;
             }
         }
         return result;
